@@ -1,0 +1,67 @@
+# =============================================================================
+# .GITIGNORE — Terraform
+# =============================================================================
+# Lista de arquivos que o Git NUNCA deve versionar neste projeto.
+# Aplica-se a ambos os diretórios: bootstrap/ e project/
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ESTADO LOCAL — nunca versionar
+# -----------------------------------------------------------------------------
+# O tfstate pode conter: IPs, IDs de recursos, ARNs, dados de saída de
+# recursos como aws_db_instance (que inclui senha do banco em texto puro).
+# Se versionado, qualquer pessoa com acesso ao repositório vê esses dados.
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# -----------------------------------------------------------------------------
+# DIRETÓRIO DE PLUGINS — gerado pelo terraform init
+# -----------------------------------------------------------------------------
+# Contém os binários dos providers (~centenas de MB para o provider AWS).
+# Cada membro do time roda `terraform init` para baixar na própria máquina.
+# Versionar seria redundante, pesado e desnecessário.
+.terraform/
+.terraform.lock.hcl
+# NOTA: alguns times VERSIONAM o .terraform.lock.hcl intencionalmente
+# para garantir que todos usem exatamente as mesmas versões de provider.
+# Remova esta linha se essa for a política do seu time.
+
+# -----------------------------------------------------------------------------
+# ARQUIVOS DE VARIÁVEIS — podem conter dados sensíveis
+# -----------------------------------------------------------------------------
+# *.tfvars pode conter access keys, senhas, tokens.
+# ATENÇÃO: se você quer versionar o terraform.tfvars com valores não-sensíveis,
+# remova a linha abaixo e adicione ao .gitignore apenas os arquivos específicos
+# que contêm dados sensíveis (ex: secrets.tfvars, prod.tfvars).
+*.tfvars
+*.tfvars.json
+
+# -----------------------------------------------------------------------------
+# LOGS E ARQUIVOS TEMPORÁRIOS
+# -----------------------------------------------------------------------------
+# Gerado pelo Terraform em caso de crash ou quando TF_LOG está ativo
+crash.log
+crash.*.log
+terraform.log
+
+# Planos salvos com `terraform plan -out=meuplan`
+# São binários que podem conter dados sensíveis do state
+*.tfplan
+*.plan
+
+# Override files — usados localmente para sobrescrever configurações
+# sem afetar o repositório. Nunca devem ser commitados.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# -----------------------------------------------------------------------------
+# SISTEMA OPERACIONAL
+# -----------------------------------------------------------------------------
+.DS_Store        # macOS
+Thumbs.db        # Windows
+.idea/           # JetBrains IDEs
+.vscode/         # VS Code (opcional — alguns times versionam as configs do VS Code)
+*.swp            # Vim swap files
