@@ -1,6 +1,5 @@
 # Política de Nomenclatura – Terraform & Terragrunt
 
-**Equipe DevOps (Delivery)**
 **Autor: Raul Rodrigues Soares**
 
 Este documento define a política oficial de nomenclatura para recursos, módulos, diretórios e arquivos utilizados em projetos de Terraform e Terragrunt.
