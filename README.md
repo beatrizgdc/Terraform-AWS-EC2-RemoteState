@@ -227,13 +227,20 @@ cd ..
 # A partir da raiz do projeto:
 cd project/
 
-# Use o comando SSH pronto gerado no output:
+# Ajuste a permissão da chave privada (obrigatório)
+chmod 400 terraform-demo-dev-key.pem
+
+# (Opcional) confira a permissão
+ls -l terraform-demo-dev-key.pem
+# Deve aparecer algo como: -r-------- 
+
+# Use o comando SSH gerado pelo Terraform:
 terraform output -raw ssh_command
 
-# Ou cole diretamente:
+# Ou conecte manualmente com o IP exibido:
 ssh -i ./terraform-demo-dev-key.pem ubuntu@<ip_exibido_no_output>
 
-# Volte para a raiz do projeto
+# Após terminar, volte para a raiz do projeto
 cd ..
 ```
 
