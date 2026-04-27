@@ -17,7 +17,7 @@
 variable "aws_region" {
   type        = string
   description = "Região AWS onde todos os recursos serão provisionados. Altere para sa-east-1 para São Paulo, us-west-2 para Oregon, etc."
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 # -----------------------------------------------------------------------------
