@@ -10,7 +10,7 @@
 variable "aws_region" {
   type        = string
   description = "Região AWS onde o bucket S3 e a tabela DynamoDB serão criados. Deve ser a mesma região que o projeto principal vai usar."
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "state_bucket_prefix" {
